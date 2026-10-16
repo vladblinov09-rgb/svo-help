@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Помощь СВО — выплаты, ВВК, увольнение | Приём обращений</title>
+<meta name="description" content="Сообщество взаимопомощи по вопросам выплат, ВВК и увольнения. Оставьте обращение с файлами — отвечаем лично.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0d12'/%3E%3Cpath d='M16 6l9 4v6c0 5-3.8 8.6-9 10-5.2-1.4-9-5-9-10v-6l9-4z' fill='none' stroke='%23e0474f' stroke-width='2'/%3E%3Cpath d='M12 16l3 3 5-6' fill='none' stroke='%23e0474f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0d12; --bg-soft:#10131c; --card:#141926; --card-hover:#181e2e;
+    --border:#232b3d; --text:#e9edf5; --muted:#98a2b8; --accent:#e0474f;
+    --accent-soft:rgba(224,71,79,.12); --accent-grad:linear-gradient(135deg,#e0474f,#ff7a5c);
+    --ok:#3fb27f; --radius:16px; --shadow:0 12px 40px rgba(0,0,0,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  .kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-size:clamp(30px,5vw,52px);line-height:1.12;font-weight:800;letter-spacing:-.02em}
+  h2{font-size:clamp(24px,3.4vw,36px);line-height:1.2;font-weight:800;letter-spacing:-.01em;margin-bottom:14px}
+  h3{font-size:18px;font-weight:700;margin-bottom:6px}
+  p{color:var(--muted)}
+  .lead{font-size:clamp(16px,2vw,19px);max-width:640px;margin-top:18px}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,18,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .brand svg{flex:none}
+  .brand small{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+  .nav-links{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15px;padding:11px 22px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:.18s;white-space:nowrap;font-family:inherit}
+  .btn-primary{background:var(--accent-grad);color:#fff;box-shadow:0 6px 22px rgba(224,71,79,.32)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(224,71,79,.42)}
+  .btn-ghost{background:var(--card);border-color:var(--border);color:var(--text)}
+  .btn-ghost:hover{background:var(--card-hover);border-color:#33405a}
+  .btn-tg{background:#2aabee;color:#fff}
+  .btn-tg:hover{background:#229ed9;transform:translateY(-2px)}
+  .btn-sm{padding:9px 16px;font-size:14px;border-radius:10px}
+  .btn:disabled{opacity:.6;cursor:wait;transform:none}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  .hero{position:relative;padding:88px 0 76px;background:radial-gradient(720px 340px at 82% -10%,rgba(224,71,79,.16),transparent 60%),radial-gradient(620px 300px at 8% 110%,rgba(42,171,238,.10),transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+  .hero .lead{margin-bottom:28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  .grad{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:var(--shadow)}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stat{background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:16px}
+  .stat b{display:block;font-size:24px;font-weight:800}
+  .stat span{font-size:13px;color:var(--muted)}
+  .live-strip{display:flex;align-items:center;gap:9px;margin-top:16px;font-size:13.5px;color:var(--muted)}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulse 2s infinite;flex:none}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .hero-note{margin-top:16px;font-size:13.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none;margin-top:7px;box-shadow:0 0 10px var(--ok)}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero{padding:64px 0 56px}}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:.2s}
+  .card:hover{background:var(--card-hover);border-color:#33405a;transform:translateY(-3px)}
+  .card .ico{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--accent)}
+  .card p{font-size:14.5px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px 24px}
+  .step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--accent-grad);font-weight:800;font-size:15px;margin-bottom:14px}
+  .step p{font-size:14.5px}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+  .form-section{background:radial-gradient(600px 300px at 90% 0%,rgba(224,71,79,.10),transparent 60%),var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+  @media(max-width:860px){.form-grid{grid-template-columns:1fr}}
+  form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+  .field{margin-bottom:18px}
+  label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+  label .req{color:var(--accent)}
+  input,select,textarea{width:100%;background:var(--bg-soft);border:1px solid var(--border);border-radius:11px;padding:12px 14px;color:var(--text);font-size:15px;font-family:inherit;transition:.15s}
+  input::placeholder,textarea::placeholder{color:#5d6880}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  textarea{min-height:120px;resize:vertical}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2398a2b8' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.two{grid-template-columns:1fr}}
+  .check{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-bottom:20px}
+  .check input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--accent)}
+  .check a{color:var(--accent);text-decoration:underline}
+  .err{display:none;color:#ff8a90;font-size:13px;margin-top:6px}
+  .field.invalid .err{display:block}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#c33}
+  .form-error{display:none;background:rgba(224,71,79,.12);border:1px solid rgba(224,71,79,.4);color:#ff9ba1;border-radius:11px;padding:11px 14px;font-size:14px;margin-bottom:16px}
+  .form-error.show{display:block}
+  .form-note{font-size:13px;color:var(--muted);margin-top:16px;display:flex;gap:10px;align-items:flex-start}
+  .form-note svg{flex:none;margin-top:3px;color:var(--accent)}
+
+  .file-drop{border:1.5px dashed var(--border);border-radius:12px;padding:16px;text-align:center;transition:.15s;background:var(--bg-soft)}
+  .file-drop:hover,.file-drop.dragover{border-color:var(--accent);background:var(--accent-soft)}
+  .file-drop input{display:none}
+  .file-drop .fd-label{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-weight:600;font-size:14.5px;cursor:pointer}
+  .file-drop .hint{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .file-list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px}
+  .file-list li{display:flex;align-items:center;gap:10px;background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13.5px}
+  .file-list li .fname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .file-list li .fsize{color:var(--muted);font-size:12.5px}
+  .file-list li button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:2px 4px}
+  .file-list li button:hover{color:var(--accent)}
+
+  .success{display:none;text-align:center;padding:8px 0}
+  .success.show{display:block;animation:pop .35s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+  .success .tick{width:62px;height:62px;border-radius:50%;background:rgba(63,178,127,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:var(--ok)}
+  .ticket{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;background:var(--bg-soft);border:1px dashed var(--border);border-radius:10px;padding:8px 14px;display:inline-block;margin:10px 0 8px;color:var(--accent);letter-spacing:.04em}
+  .success-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
+
+  .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-top:14px;overflow:hidden}
+  .faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-size:22px;color:var(--accent);font-weight:400;flex:none;transition:.2s}
+  .faq-item[open] summary::after{transform:rotate(45deg)}
+  .faq-item .answer{padding:0 22px 20px;font-size:14.5px;color:var(--muted)}
+
+  .cta{background:var(--accent-grad);border-radius:24px;padding:44px 40px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;box-shadow:0 18px 50px rgba(224,71,79,.28)}
+  .cta h2{color:#fff;margin-bottom:6px}
+  .cta p{color:rgba(255,255,255,.85);max-width:520px}
+  .cta .btn{background:#fff;color:#1a1d26}
+  .cta .btn:hover{transform:translateY(-2px)}
+
+  footer{border-top:1px solid var(--border);padding:34px 0;color:var(--muted);font-size:13.5px}
+  .foot-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot-grid nav{display:flex;gap:22px;flex-wrap:wrap}
+  .disclaimer{margin-top:18px;font-size:12.5px;color:#6b7488}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="#141926"/>
+        <path d="M16 6l9 4v6c0 5-3.8 8.6-9 10-5.2-1.4-9-5-9-10v-6l9-4z" stroke="#e0474f" stroke-width="2"/>
+        <path d="M12 16l3 3 5-6" stroke="#e0474f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Помощь СВО<small>выплаты · ВВК · увольнение</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#help">Чем помогаем</a>
+      <a href="#how">Как это работает</a>
+      <a href="#faq">Вопросы</a>
+      <a href="/appeal">Отследить обращение</a>
+      <a href="/lk">Личный кабинет</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#appeal">Оставить обращение</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Сообщество взаимопомощи</span>
+        <h1>Помощь по <span class="grad">выплатам, ВВК</span> и увольнению</h1>
+        <p class="lead">Опишите ситуацию и прикрепите документы — разберём вместе, подскажем порядок действий и куда обращаться. Отвечаем лично и бесплатно.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#appeal">Оставить обращение</a>
+          <a class="btn btn-ghost" href="https://t.me/svourist131" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3L18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3 0-.6-.5-.3L7.3 13.2 2.7 11.8c-.9-.3-.9-.9.2-1.4l17.5-6.7c.8-.3 1.5.2 1.5 1.1z"/></svg>
+            Открыть чат
+          </a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="stat-row">
+          <div class="stat"><b>396</b><span>участников в чате</span></div>
+          <div class="stat"><b id="onlineNow">…</b><span>онлайн на сайте</span></div>
+          <div class="stat"><b>0 ₽</b><span>помощь бесплатная</span></div>
+          <div class="stat"><b>24/7</b><span>можно написать</span></div>
+        </div>
+        <div class="live-strip"><span class="live-dot"></span><span id="liveText">обращений принято: …</span></div>
+        <div class="hero-note"><span class="dot"></span><span>Мы не государственный орган и не берём деньги за консультации.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="wrap">
+      <span class="kicker">Чем помогаем</span>
+      <h2>Основные направления</h2>
+      <p>Выберите направление — так мы быстрее поймём ваш вопрос и подключим нужного человека из чата.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+          <h3>Выплаты и компенсации</h3>
+          <p>Единовременные и регулярные выплаты, компенсации, льготы — какие положены и как их оформить.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 7.8-8 9-4.6-1.2-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4.5"/></svg></div>
+          <h3>ВВК и медосвидетельствование</h3>
+          <p>Подготовка к военно-врачебной комиссии, какие документы и справки нужны, что делать при отказе.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></div>
+          <h3>Увольнение и перевод</h3>
+          <p>Порядок увольнения, зачисления в запас, перевод по здоровью и по иным основаниям.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></div>
+          <h3>Документы и справки</h3>
+          <p>Какие справки, выписки и заявления подготовить и куда их подавать.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.85"/><path d="M16.5 3.6a4 4 0 010 6.8"/></svg></div>
+          <h3>Поддержка семей</h3>
+          <p>Социальная поддержка, льготы и выплаты для родных — куда обращаться и что нужно.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.2 9.2a2.8 2.8 0 015.5.7c0 1.8-2.7 2.1-2.7 3.8"/><path d="M12 17h.01"/></svg></div>
+          <h3>Другой вопрос</h3>
+          <p>Не нашли своё направление? Опишите ситуацию — направим к тем, кто знает.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <span class="kicker">Как это работает</span>
+      <h2>Три шага до ответа</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Заполните форму</h3>
+          <p>Опишите ситуацию и при необходимости прикрепите фото документов или справок — до 5 файлов.</p>
+        </div>
+        <div class="step">
+          <h3>Сохраните номер обращения</h3>
+          <p>После отправки вы получите номер (например, SV-20261016-483). По нему видна вся переписка.</p>
+        </div>
+        <div class="step">
+          <h3>Следите за ответом</h3>
+          <p>На странице «Отследить обращение» видно статус и ответы администратора — можно продолжить переписку там же.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appeal" class="form-section">
+    <div class="wrap form-grid">
+      <div>
+        <span class="kicker">Приём обращений</span>
+        <h2>Оставьте обращение</h2>
+        <p>Чем подробнее опишете ситуацию, тем точнее будет ответ. Прикрепите документы, если они есть — это сильно ускоряет разбор.</p>
+        <br>
+        <p>Уже отправляли обращение?</p>
+        <p style="margin-top:12px"><a class="btn btn-ghost btn-sm" href="/appeal">Отследить обращение по номеру</a></p>
+        <p style="margin-top:22px">Если вопрос срочный — напишите сразу в чат:</p>
+        <p style="margin-top:12px"><a class="btn btn-tg btn-sm" href="https://t.me/svourist131" target="_blank" rel="noopener">t.me/svourist131</a></p>
+      </div>
+
+      <form id="appealForm" novalidate>
+        <div id="formBody">
+          <div class="form-error" id="formError"></div>
+
+          <div class="two">
+            <div class="field">
+              <label for="name">Имя <span class="req">*</span></label>
+              <input id="name" name="name" type="text" placeholder="Как к вам обращаться" required>
+              <span class="err">Укажите имя</span>
+            </div>
+            <div class="field">
+              <label for="contact">Telegram или телефон <span class="req">*</span></label>
+              <input id="contact" name="contact" type="text" placeholder="@username или +7..." required>
+              <span class="err">Укажите @username или номер телефона</span>
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="category">Направление <span class="req">*</span></label>
+              <select id="category" name="category" required>
+                <option value="">Выберите…</option>
+                <option>Выплаты и компенсации</option>
+                <option>ВВК и медосвидетельствование</option>
+                <option>Увольнение и перевод</option>
+                <option>Документы и справки</option>
+                <option>Поддержка семей</option>
+                <option>Другой вопрос</option>
+              </select>
+              <span class="err">Выберите направление</span>
+            </div>
+            <div class="field">
+              <label for="subject">Тема обращения</label>
+              <input id="subject" name="subject" type="text" placeholder="Кратко, одной строкой">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Опишите ситуацию <span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="Что случилось, что уже сделали, какая помощь нужна? Не менее 20 символов." required minlength="20"></textarea>
+            <span class="err">Опишите ситуацию подробнее (минимум 20 символов)</span>
+          </div>
+
+          <div class="field">
+            <label>Прикрепить файлы</label>
+            <div class="file-drop" id="fileDrop">
+              <label class="fd-label" for="files">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.6l-9 9a5 5 0 01-7-7l9-9a3.5 3.5 0 015 5l-9 9a2 2 0 01-3-3l8-8"/></svg>
+                Выберите файлы или перетащите сюда
+              </label>
+              <div class="hint">Фото, PDF, Word, TXT, ZIP — до 5 файлов, каждый до 10 МБ</div>
+              <input id="files" name="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.gif,.pdf,.txt,.doc,.docx,.odt,.rtf,.zip">
+            </div>
+            <ul class="file-list" id="fileList"></ul>
+          </div>
+
+          <label class="check">
+            <input id="consent" type="checkbox" required>
+            <span>Согласен на обработку указанных данных для ответа на обращение. <a href="#faq">Подробнее</a></span>
+          </label>
+
+          <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            Отправить обращение
+          </button>
+
+          <div class="form-note" id="cabinetNote" style="display:none"></div>
+          <div class="form-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <span>Обращение сразу попадает администратору чата. Ответ появится на странице отслеживания по вашему номеру, а если войдёте в личный кабинет — вся переписка сохранится там.</span>
+          </div>
+        </div>
+
+        <div class="success" id="successBlock">
+          <div class="tick">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Обращение принято</h3>
+          <div class="ticket" id="ticketId">SV-000</div>
+          <p>Сохраните номер — по нему вы сможете посмотреть ответы и продолжить переписку.</p>
+          <div class="success-actions">
+            <a class="btn btn-primary" id="cabinetBtn" href="/lk" style="display:none">Открыть личный кабинет</a>
+            <a class="btn btn-ghost" id="trackBtn" href="/appeal">Отследить обращение</a>
+            <button class="btn btn-ghost" id="copyBtn" type="button">Скопировать номер</button>
+            <button class="btn btn-ghost" id="newBtn" type="button">Новое обращение</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <span class="kicker">Частые вопросы</span>
+      <h2>Отвечаем на вопросы</h2>
+      <details class="faq-item" open>
+        <summary>По каким вопросам вы помогаете?</summary>
+        <div class="answer">Выплаты и компенсации, военно-врачебная комиссия (ВВК) и медосвидетельствование, увольнение и перевод, оформление документов и справок, социальная поддержка семей. Если вопрос не подходит ни под одну категорию — просто опишите ситуацию в обращении.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Это бесплатно?</summary>
+        <div class="answer">Да. Мы — сообщество взаимопомощи, консультации бесплатные. Мы не являемся государственным органом, юридической компанией или военкоматом и не берём денег за ответы.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Как быстрее получить ответ?</summary>
+        <div class="answer">Заполните форму максимально подробно: что произошло, какие документы уже есть, какие шаги предприняли, какой результат получили. Приложите фото или сканы документов — это ускоряет разбор. И укажите рабочий контакт в Telegram.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Какие файлы можно прикрепить?</summary>
+        <div class="answer">Фото (JPG, PNG, WebP, GIF), PDF, текстовые документы (DOC, DOCX, ODT, RTF, TXT) и архивы ZIP — до 5 файлов, каждый не больше 10 МБ. Не присылайте фотографии документов с персональными данными, если в этом нет необходимости.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Какие документы обычно нужны?</summary>
+        <div class="answer">Зависит от вопроса: чаще всего пригодятся удостоверение, военный билет, справки и выписки из медицинских документов, приказы и заявления, документы о ранее полученных выплатах. Точный список подскажем после того, как вы опишете ситуацию.</div>
+      </details>
+      <details class="faq-item">
+        <summary>ВВК отказала — что делать?</summary>
+        <div class="answer">Существует установленный порядок обжалования решений. Опишите в обращении, на каком основании отказали и какие документы есть, — подскажем, куда обращаться дальше и как подготовить пакет документов.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Как узнать статус обращения?</summary>
+        <div class="answer">После отправки вы получите номер обращения. Откройте страницу «Отследить обращение» (в меню сайта), введите номер — там видны статус, все сообщения и файлы, и можно написать ещё.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что такое личный кабинет?</summary>
+        <div class="answer">Это отдельная страница, где собраны все ваши обращения, переписка с администратором и его ответы. Создаётся один раз (логин — @username в Telegram или email, пароль от 6 символов), вход запоминается на устройстве. В кабинете можно продолжить переписку по любому обращению, прикрепить файлы и одним нажатием перейти в Telegram-чат. Обращения, отправленные ранее с того же @username или email, автоматически появятся в кабинете.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Мои данные в безопасности?</summary>
+        <div class="answer">Обращения и файлы хранятся на сервере проекта, доступ к ним есть только у администратора чата. Мы не передаём данные третьим лицам. Переписка по номеру обращения видна только тому, у кого есть этот номер.</div>
+      </details>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2 style="color:#fff">Нужен ответ сейчас?</h2>
+          <p>Присоединяйтесь к чату — там уже 396 участников, многие помогали друг другу с похожими ситуациями.</p>
+        </div>
+        <a class="btn" href="https://t.me/svourist131" target="_blank" rel="noopener">Перейти в Telegram-чат</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="brand" href="#top">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#141926"/>
+          <path d="M16 6l9 4v6c0 5-3.8 8.6-9 10-5.2-1.4-9-5-9-10v-6l9-4z" stroke="#e0474f" stroke-width="2"/>
+          <path d="M12 16l3 3 5-6" stroke="#e0474f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Помощь СВО</span>
+      </a>
+      <nav>
+        <a href="#help">Чем помогаем</a>
+        <a href="#appeal">Обращение</a>
+        <a href="#faq">Вопросы</a>
+        <a href="/appeal">Отследить</a>
+        <a href="/admin">Админ-панель</a>
+        <a href="https://t.me/svourist131" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </div>
+    <p class="disclaimer" id="publicUrlLine" style="display:none">Публичный адрес сайта: <span id="publicUrl" class="mono"></span></p>
+    <p class="disclaimer">Информация на сайте носит справочный характер, не является юридической консультацией и не отражает официальную позицию государственных органов. При принятии решений обращайтесь к официальным источникам и компетентным органам.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('appealForm');
+  var formBody = document.getElementById('formBody');
+  var successBlock = document.getElementById('successBlock');
+  var ticketEl = document.getElementById('ticketId');
+  var trackBtn = document.getElementById('trackBtn');
+  var copyBtn = document.getElementById('copyBtn');
+  var newBtn = document.getElementById('newBtn');
+  var submitBtn = document.getElementById('submitBtn');
+  var formError = document.getElementById('formError');
+  var fileInput = document.getElementById('files');
+  var fileList = document.getElementById('fileList');
+  var fileDrop = document.getElementById('fileDrop');
+  var MAX_FILES = 5, MAX_MB = 10;
+  var picked = [];
+
+  function fmtSize(b){
+    if(b < 1024) return b + ' Б';
+    if(b < 1048576) return (b/1024).toFixed(0) + ' КБ';
+    return (b/1048576).toFixed(1) + ' МБ';
+  }
+  function renderFiles(){
+    fileList.textContent = '';
+    picked.forEach(function(f, i){
+      var li = document.createElement('li');
+      var name = document.createElement('span');
+      name.className = 'fname'; name.textContent = f.name;
+      var size = document.createElement('span');
+      size.className = 'fsize'; size.textContent = fmtSize(f.size);
+      var del = document.createElement('button');
+      del.type = 'button'; del.innerHTML = '&times;'; del.title = 'Убрать';
+      del.addEventListener('click', function(){ picked.splice(i,1); syncInput(); renderFiles(); });
+      li.appendChild(name); li.appendChild(size); li.appendChild(del);
+      fileList.appendChild(li);
+    });
+  }
+  function syncInput(){
+    try{
+      var dt = new DataTransfer();
+      picked.forEach(function(f){ dt.items.add(f); });
+      fileInput.files = dt.files;
+    }catch(e){ /* старые браузеры — просто оставим input как есть */ }
+  }
+  function addFiles(list){
+    var errs = [];
+    for(var i=0;i<list.length;i++){
+      var f = list[i];
+      if(picked.length >= MAX_FILES){ errs.push('Можно прикрепить не больше ' + MAX_FILES + ' файлов'); break; }
+      if(f.size > MAX_MB*1048576){ errs.push('«' + f.name + '» больше ' + MAX_MB + ' МБ'); continue; }
+      if(picked.some(function(x){ return x.name===f.name && x.size===f.size; })) continue;
+      picked.push(f);
+    }
+    syncInput(); renderFiles();
+    if(errs.length) showError(errs.join('; '));
+  }
+  fileInput.addEventListener('change', function(){ addFiles(fileInput.files); });
+  ['dragenter','dragover'].forEach(function(ev){
+    fileDrop.addEventListener(ev, function(e){ e.preventDefault(); fileDrop.classList.add('dragover'); });
+  });
+  ['dragleave','drop'].forEach(function(ev){
+    fileDrop.addEventListener(ev, function(e){ e.preventDefault(); fileDrop.classList.remove('dragover'); });
+  });
+  fileDrop.addEventListener('drop', function(e){
+    if(e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
+  });
+
+  function fieldOf(el){ return el.closest('.field') || el.closest('.check') || el; }
+  function setInvalid(el, bad){
+    var f = fieldOf(el); if(!f) return;
+    f.classList.toggle('invalid', !!bad);
+  }
+  function showError(msg){
+    formError.textContent = msg;
+    formError.classList.add('show');
+  }
+  function hideError(){ formError.classList.remove('show'); }
+
+  ['name','contact','category','message','consent'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('input', function(){ setInvalid(el, false); hideError(); });
+    el.addEventListener('change', function(){ setInvalid(el, false); hideError(); });
+  });
+
+  function validate(){
+    var ok = true;
+    var name = document.getElementById('name');
+    var contact = document.getElementById('contact');
+    var category = document.getElementById('category');
+    var message = document.getElementById('message');
+    var consent = document.getElementById('consent');
+    if(!name.value.trim()){ setInvalid(name,true); ok=false; }
+    var c = contact.value.trim();
+    var contactOk = /^@[\w\d_]{3,}$/.test(c) || /^\+?[\d\s()-]{7,}$/.test(c);
+    if(!contactOk){ setInvalid(contact,true); ok=false; }
+    if(!category.value){ setInvalid(category,true); ok=false; }
+    if(message.value.trim().length < 20){ setInvalid(message,true); ok=false; }
+    if(!consent.checked){ consent.parentElement.classList.add('invalid'); ok=false; }
+    return ok;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    hideError();
+    if(!validate()){
+      var firstInvalid = form.querySelector('.invalid');
+      if(firstInvalid) firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    var fd = new FormData();
+    fd.append('name', document.getElementById('name').value.trim());
+    fd.append('contact', document.getElementById('contact').value.trim());
+    fd.append('category', document.getElementById('category').value);
+    fd.append('subject', document.getElementById('subject').value.trim());
+    fd.append('message', document.getElementById('message').value.trim());
+    fd.append('consent', document.getElementById('consent').checked ? 'on' : '');
+    picked.forEach(function(f){ fd.append('files', f, f.name); });
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    var NOT_FROM_SERVER = 'Похоже, страница открыта из превью файла, а не с сервера — поэтому запросы не работают. Откройте живой сайт через превью запущенного процесса «Сайт приёма обращений» (справа вверху) и перейдите на /admin.';
+    var lkToken = localStorage.getItem('svo_cabinet_token') || sessionStorage.getItem('svo_cabinet_token');
+    var reqHeaders = {};
+    if(lkToken) reqHeaders['Authorization'] = 'Bearer ' + lkToken;
+    fetch('/api/appeals', { method:'POST', headers: reqHeaders, body: fd })
+      .then(function(r){
+        return r.text().then(function(txt){
+          var j;
+          try{ j = JSON.parse(txt); }
+          catch(e){ throw new Error(r.status === 405 || txt.indexOf('Method Not Allowed') !== -1 ? NOT_FROM_SERVER : 'Сервер вернул неожиданный ответ'); }
+          return { ok: r.ok, j: j };
+        });
+      })
+      .then(function(res){
+        if(!res.ok) throw new Error(res.j.error || 'Не удалось отправить обращение');
+        ticketEl.textContent = res.j.id;
+        trackBtn.href = '/appeal?id=' + encodeURIComponent(res.j.id);
+        if(lkToken) document.getElementById('cabinetBtn').style.display = 'inline-flex';
+        formBody.style.display = 'none';
+        successBlock.classList.add('show');
+        successBlock.scrollIntoView({behavior:'smooth', block:'center'});
+      })
+      .catch(function(err){ showError(err.message || 'Ошибка сети. Попробуйте ещё раз или напишите в Telegram-чат.'); })
+      .finally(function(){ submitBtn.disabled = false; submitBtn.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg> Отправить обращение'; });
+  });
+
+  copyBtn.addEventListener('click', function(){
+    var text = ticketEl.textContent;
+    function done(){ copyBtn.textContent = 'Скопировано ✓'; setTimeout(function(){ copyBtn.textContent='Скопировать номер'; },1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(); });
+    } else fallback();
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta); done();
+    }
+  });
+
+  // личный кабинет: если вошли — подставляем имя и контакт
+  (function(){
+    var token = localStorage.getItem('svo_cabinet_token') || sessionStorage.getItem('svo_cabinet_token');
+    if(!token) return;
+    fetch('/api/me', {headers:{'Authorization':'Bearer ' + token}})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if(!d || !d.user) return;
+        var nameEl = document.getElementById('name'), contactEl = document.getElementById('contact');
+        if(nameEl && !nameEl.value) nameEl.value = d.user.name;
+        if(contactEl && !contactEl.value) contactEl.value = d.user.login;
+        var note = document.getElementById('cabinetNote');
+        if(note){
+          note.style.display = 'flex';
+          var a = document.createElement('a');
+          a.href = '/lk'; a.style.color = 'var(--accent)';
+          a.textContent = 'Вы вошли как ' + d.user.name + ' — обращение попадёт в личный кабинет';
+          note.appendChild(a);
+        }
+      })
+      .catch(function(){});
+  })();
+
+  newBtn.addEventListener('click', function(){
+    form.reset();
+    picked = []; renderFiles();
+    form.querySelectorAll('.invalid').forEach(function(el){ el.classList.remove('invalid'); });
+    successBlock.classList.remove('show');
+    formBody.style.display = 'block';
+    document.getElementById('name').focus();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var sid = localStorage.getItem('svo_sid');
+  if(!sid){ sid = 'v' + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('svo_sid', sid); }
+  function beat(){
+    return fetch('/api/heartbeat', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: sid})})
+      .then(function(r){ return r.json(); }).catch(function(){ return null; });
+  }
+  beat();
+  setInterval(beat, 15000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) beat(); });
+
+  var onlineEl = document.getElementById('onlineNow');
+  var liveText = document.getElementById('liveText');
+  function applyLive(d){
+    if(!d) return;
+    if(onlineEl) onlineEl.textContent = d.online;
+    if(d.publicUrl){
+      var line = document.getElementById('publicUrlLine'), u = document.getElementById('publicUrl');
+      if(line && u){ u.textContent = d.publicUrl; line.style.display = 'block'; }
+    }
+    if(liveText && d.total !== undefined){
+      liveText.textContent = 'обращений принято: ' + d.total + ' · сегодня: ' + d.today + ' · отвечено: ' + d.answered;
+    }
+  }
+  // опрос раз в 8 секунд — работает на любом хостинге, даже если поток заблокирован
+  (function poll(){ beat().then(applyLive); setTimeout(poll, 8000); })();
+  try{
+    var es = new EventSource('/api/live');
+    es.onmessage = function(e){ try{ applyLive(JSON.parse(e.data)); }catch(err){} };
+    es.onerror = function(){ /* EventSource переподключается сам */ };
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
